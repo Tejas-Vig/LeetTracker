@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetTracker - DSA Problem Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">📊</span>
+                <h1>LeetTracker</h1>
+            </div>
+            <p class="tagline">Master DSA, One Problem at a Time</p>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar / Filter Section -->
+        <aside class="sidebar">
+            <div class="filter-section">
+                <h3>Quick Filters</h3>
+                
+                <div class="filter-group">
+                    <label for="filterDifficulty">Difficulty</label>
+                    <select id="filterDifficulty">
+                        <option value="">All Levels</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterTopic">Topic</label>
+                    <select id="filterTopic">
+                        <option value="">All Topics</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filterStatus">Status</label>
+                    <select id="filterStatus">
+                        <option value="">All Status</option>
+                        <option value="Solved">Solved</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Revision">Revision</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-secondary" id="resetFiltersBtn">Reset Filters</button>
+            </div>
+
+            <!-- Analytics Summary -->
+            <div class="analytics-summary">
+                <h3>Quick Stats</h3>
+                <div class="stat-item">
+                    <span class="stat-label">Total Problems</span>
+                    <span class="stat-value" id="statTotal">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Solved</span>
+                    <span class="stat-value solved" id="statSolved">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Pending</span>
+                    <span class="stat-value pending" id="statPending">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Revision</span>
+                    <span class="stat-value revision" id="statRevision">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Weakest Topic</span>
+                    <span class="stat-value weak" id="statWeakest">-</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Add/Edit Problem Form -->
+            <section class="form-section">
+                <h2>Add / Edit Problem</h2>
+                <form id="problemForm" class="problem-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="problemName">Problem Name *</label>
+                            <input type="text" id="problemName" placeholder="e.g., Two Sum" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="problemDifficulty">Difficulty *</label>
+                            <select id="problemDifficulty" required>
+                                <option value="">Select Difficulty</option>
+                                <option value="Easy">Easy</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="problemTopic">Topic *</label>
+                            <input type="text" id="problemTopic" placeholder="e.g., Array, String" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="problemStatus">Status *</label>
+                            <select id="problemStatus" required>
+                                <option value="">Select Status</option>
+                                <option value="Solved">Solved</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Revision">Revision</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="problemAttempts">Attempts</label>
+                            <input type="number" id="problemAttempts" min="0" placeholder="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="problemTimeTaken">Time Taken (minutes)</label>
+                            <input type="number" id="problemTimeTaken" min="0" placeholder="0">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="problemNotes">Notes & Approach</label>
+                        <textarea id="problemNotes" placeholder="Describe your approach, mistakes, and key learnings..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Add Problem</button>
+                        <button type="reset" class="btn btn-secondary" id="resetFormBtn">Clear</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Search Bar -->
+            <section class="search-section">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="🔍 Search by problem name..."
+                >
+                <div class="sort-controls">
+                    <label for="sortBy">Sort by:</label>
+                    <select id="sortBy">
+                        <option value="dateAdded">Date Added (Newest)</option>
+                        <option value="name">Name (A-Z)</option>
+                        <option value="difficulty">Difficulty</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Problems Table -->
+            <section class="table-section">
+                <h2>Problems</h2>
+                <div class="table-wrapper">
+                    <table id="problemsTable" class="problems-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Difficulty</th>
+                                <th>Topic</th>
+                                <th>Status</th>
+                                <th>Attempts</th>
+                                <th>Time (min)</th>
+                                <th>Date Added</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="problemsTableBody">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <p id="noProblemsMsg" class="empty-state">No problems yet. Add your first problem to get started! 🚀</p>
+            </section>
+
+            <!-- Analytics Dashboard -->
+            <section class="analytics-section">
+                <h2>Analytics Dashboard</h2>
+                
+                <div class="analytics-grid">
+                    <!-- Difficulty Chart -->
+                    <div class="analytics-card">
+                        <h3>Difficulty Distribution</h3>
+                        <div id="difficultyChart" class="chart-container">
+                            <div class="bar">
+                                <span class="bar-label">Easy</span>
+                                <div class="bar-fill" style="width: 0%;" id="easyBar"></div>
+                                <span class="bar-count" id="easyCount">0</span>
+                            </div>
+                            <div class="bar">
+                                <span class="bar-label">Medium</span>
+                                <div class="bar-fill medium" style="width: 0%;" id="mediumBar"></div>
+                                <span class="bar-count" id="mediumCount">0</span>
+                            </div>
+                            <div class="bar">
+                                <span class="bar-label">Hard</span>
+                                <div class="bar-fill hard" style="width: 0%;" id="hardBar"></div>
+                                <span class="bar-count" id="hardCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status Chart -->
+                    <div class="analytics-card">
+                        <h3>Status Distribution</h3>
+                        <div id="statusChart" class="chart-container">
+                            <div class="bar">
+                                <span class="bar-label">Solved</span>
+                                <div class="bar-fill solved" style="width: 0%;" id="solvedBar"></div>
+                                <span class="bar-count" id="solvedCount">0</span>
+                            </div>
+                            <div class="bar">
+                                <span class="bar-label">Pending</span>
+                                <div class="bar-fill pending" style="width: 0%;" id="pendingBar"></div>
+                                <span class="bar-count" id="pendingCount">0</span>
+                            </div>
+                            <div class="bar">
+                                <span class="bar-label">Revision</span>
+                                <div class="bar-fill revision" style="width: 0%;" id="revisionBar"></div>
+                                <span class="bar-count" id="revisionCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Topic Distribution -->
+                    <div class="analytics-card wide">
+                        <h3>Topic-wise Count</h3>
+                        <div id="topicChart" class="topic-list">
+                            <p class="empty">No topics yet</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for viewing/editing problems -->
+    <div id="problemModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2 id="modalTitle">Problem Details</h2>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "name": "Two Sum",
+    "difficulty": "Easy",
+    "topic": "Array",
+    "status": "Solved",
+    "notes": "Used hash map to store complements. Achieved O(n) time complexity. Key insight: store value-index pairs in map for quick lookup.",
+    "attempts": 2,
+    "timeTaken": 15,
+    "dateAdded": "2024-01-10 10:30:45"
+  },
+  {
+    "id": 2,
+    "name": "Add Two Numbers",
+    "difficulty": "Medium",
+    "topic": "Linked List",
+    "status": "Solved",
+    "notes": "Careful with carry-over handling. Need to handle case where carry exists after both lists are exhausted.",
+    "attempts": 3,
+    "timeTaken": 35,
+    "dateAdded": "2024-01-11 14:20:30"
+  },
+  {
+    "id": 3,
+    "name": "Longest Substring Without Repeating Characters",
+    "difficulty": "Medium",
+    "topic": "String",
+    "status": "Solved",
+    "notes": "Sliding window approach. Use hash map to track character indices. Update window when duplicate found.",
+    "attempts": 4,
+    "timeTaken": 45,
+    "dateAdded": "2024-01-12 09:15:00"
+  },
+  {
+    "id": 4,
+    "name": "Median of Two Sorted Arrays",
+    "difficulty": "Hard",
+    "topic": "Array",
+    "status": "Revision",
+    "notes": "Binary search approach is optimal O(log(min(m,n))). Need to understand partition concept clearly.",
+    "attempts": 5,
+    "timeTaken": 60,
+    "dateAdded": "2024-01-13 11:45:20"
+  },
+  {
+    "id": 5,
+    "name": "Reverse Integer",
+    "difficulty": "Easy",
+    "topic": "Math",
+    "status": "Solved",
+    "notes": "Handle overflow case. Use conditions to check before multiplying/adding to avoid integer overflow.",
+    "attempts": 1,
+    "timeTaken": 10,
+    "dateAdded": "2024-01-14 08:30:00"
+  },
+  {
+    "id": 6,
+    "name": "Merge K Sorted Lists",
+    "difficulty": "Hard",
+    "topic": "Linked List",
+    "status": "Pending",
+    "notes": "Multiple approaches: 1) Min-heap 2) Merge sort 3) Divide and conquer. Need to practice more.",
+    "attempts": 2,
+    "timeTaken": 50,
+    "dateAdded": "2024-01-15 13:00:00"
+  },
+  {
+    "id": 7,
+    "name": "LRU Cache",
+    "difficulty": "Medium",
+    "topic": "Design",
+    "status": "Revision",
+    "notes": "Use HashMap + Doubly Linked List. HashMap for O(1) access, LinkedList for O(1) eviction.",
+    "attempts": 3,
+    "timeTaken": 55,
+    "dateAdded": "2024-01-16 10:20:15"
+  },
+  {
+    "id": 8,
+    "name": "Binary Tree Level Order Traversal",
+    "difficulty": "Medium",
+    "topic": "Tree",
+    "status": "Solved",
+    "notes": "BFS using queue. Process level by level. Track queue size at each level.",
+    "attempts": 2,
+    "timeTaken": 25,
+    "dateAdded": "2024-01-17 15:45:00"
+  },
+  {
+    "id": 9,
+    "name": "Word Ladder",
+    "difficulty": "Hard",
+    "topic": "Graph",
+    "status": "Pending",
+    "notes": "BFS approach. Build adjacency list based on word patterns. Need to think about graph construction.",
+    "attempts": 1,
+    "timeTaken": 40,
+    "dateAdded": "2024-01-18 12:10:30"
+  },
+  {
+    "id": 10,
+    "name": "Number of Islands",
+    "difficulty": "Medium",
+    "topic": "Graph",
+    "status": "Solved",
+    "notes": "DFS/BFS solution. Mark visited cells. Time: O(m*n), Space: O(m*n) for recursion stack.",
+    "attempts": 2,
+    "timeTaken": 20,
+    "dateAdded": "2024-01-19 09:30:45"
+  }
+]
